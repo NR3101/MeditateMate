@@ -1,34 +1,32 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import React from "react";
+import { Tabs } from "expo-router";
+import Colors from "@/constants/Colors";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-      }}>
+        tabBarActiveTintColor: Colors.primary,
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="nature-meditate"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          tabBarLabel: "Meditate",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="meditation" size={24} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="affirmations"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          tabBarLabel: "Affirmations",
+          tabBarIcon: ({ color }) => (
+            <Entypo name="open-book" size={24} color={color} />
           ),
         }}
       />
